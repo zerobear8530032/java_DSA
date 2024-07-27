@@ -56,14 +56,14 @@ int target4=500;
 int arr5[] = {1,2,4,6,550};	
 int target5=500;
 
-//System.out.println(ceilingOfaNumberBrute(arr1,target1));
-//System.out.println(ceilingOfaNumberBrute(arr2,target2));
-//System.out.println(ceilingOfaNumberBrute(arr3,target3));
-//System.out.println(ceilingOfaNumberBrute(arr4,target4));
-//System.out.println(ceilingOfaNumberOptimize(arr1,target1));
-//System.out.println(ceilingOfaNumberOptimize(arr2,target2));
-//System.out.println(ceilingOfaNumberOptimize(arr3,target3));
-//System.out.println(ceilingOfaNumberOptimize(arr4,target4));
-//System.out.println(ceilingOfaNumberOptimize(arr5,target5));
+System.out.println(ceilingOfaNumberBrute(arr1,target1));
+System.out.println(ceilingOfaNumberBrute(arr2,target2));
+System.out.println(ceilingOfaNumberBrute(arr3,target3));
+System.out.println(ceilingOfaNumberBrute(arr4,target4));
+System.out.println(ceilingOfaNumberOptimize(arr1,target1));
+System.out.println(ceilingOfaNumberOptimize(arr2,target2));
+System.out.println(ceilingOfaNumberOptimize(arr3,target3));
+System.out.println(ceilingOfaNumberOptimize(arr4,target4));
+System.out.println(ceilingOfaNumberOptimize(arr5,target5));
 }
 }

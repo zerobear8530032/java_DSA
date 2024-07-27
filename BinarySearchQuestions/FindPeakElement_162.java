@@ -56,7 +56,7 @@ public class FindPeakElement_162 {
 //		here we update s = mid+1 we already seen mid+1 is greater then mid so we does not need to check at mid 				
 				s=mid+1;
 //		search left side if array is descending order
-			}else if(arr[mid]>arr[mid+1]) {//-> this check can be replaced with else also but for 
+			}else/* if(arr[mid]>arr[mid+1])*/ {//-> this check can be replaced with else also but for 
 //here we doing mid not mid + 1 because their is a chance the mid element is the answer because we check mid and mid+1 not mid and mid-1
 				e=mid;
 			}
@@ -83,6 +83,10 @@ public static void main(String[] args) {
 		}else {
 			System.out.println("Case 2 Failed");		
 		}
+		
+		int[] nums3 = {7,2,3,1,2};
+		int output3= 0;
+		System.out.println(findPeakElementOptimize(nums3));
 		
 		System.out.println("Optimize approch");
 		if(output1==findPeakElementOptimize(nums1)) {
