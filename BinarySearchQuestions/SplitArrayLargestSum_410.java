@@ -45,56 +45,41 @@ public class SplitArrayLargestSum_410 {
 //	if (k<number of sub array ) then we will start = mid+1 // because we need a sub array with more element means their will be less sub arrays 
 //	else  end = mid .//means if k>number of sub array then we will reduce the sizes of sub array 
 
-	
-public static int splitArray(int[] nums, int k) {
-//	start and end initially
-    int start =0;
-    int end =0;
-    for(int i =0;i<nums.length;i++) {
-//    start = max of array
-    	start=Math.max(start, nums[i]);
-//    end = sum of all element in array
-    	end=end+nums[i];
-    }
-	
-	System.out.println("start "+start+" end "+end);
-//	binary seach :
-// here  this will terminate when the s==e	
-	while(start<end) {
-		
-		int mid =start+(end-start)/2;
-//		here sum of sumition of sub array 
-		int sum=0;
-		int pieces=1;// inital the piece will be one because minimum is always one
-// now we will divide element in sub array 
-		for(int n:nums) {
-//			if current sub exceed the mid we will start a new sub array by adding the element on the next arary and increasing the piece
-//			here mid is the potential answer
-			if(sum+n>mid) {
-//				means first sub array is filled 
-//				create a new sub array :
-				sum=n;
-//				increase the piece because new pieace is required
-				pieces++;
-//				else sum the number 
-			}else {
-//				adding the number to the sub array :
-				sum=sum+n;
-			}
-		}	
-//		check wheather the pieace condition is voilated or not
-//		if pieces are more means we need to increase size of sub array means we will increase the sizze  of mid by seaching on right side 
-			if(pieces>k) {
-				
-				start=mid+1;
-//		if pieces are less means we need to decrease size of sub array means we will deacrease the sizze  of mid by seaching on left side 
-			}else {
-				end=mid;
-			}
-	}
-//	finally return the answer as end
-	return end;
-    }
+	    public static  int splitArray(int[] nums, int k) {
+	        int start =Integer.MIN_VALUE;
+	        int end =0;
+	        for (int x : nums){
+	            start=Math.max(start,x);
+	            end+=x;
+	        }
+	        // System.out.println(start+" "+end);
+	        int ans =0;
+	        while(start<=end){
+	            int mid = start+(end-start)/2;
+	            if(getrequired(nums,mid)<=k){
+	                ans =mid;
+	                end = mid-1;
+	            }else{
+	                start=mid+1;
+	            }
+	        }
+	        return ans;                                                       
+	    }
+	    public static int getrequired(int [] nums, int cap){
+	        int currentk=1;
+	        int currsum=0;
+	        for(int x: nums){
+	            if(currsum+x<=cap){
+	                currsum=currsum+x;
+	            }else{
+	                currentk++;
+	                currsum=x;
+	            }
+	        }
+	        return currentk;
+
+	    }
+
 public static void main(String[] args) {
 //Example 1:
 int []nums1 = {7,2,5,10,8};
@@ -102,7 +87,11 @@ int k1 = 2;
 int output1=18;
 //Explanation: There are four ways to split nums into two subarrays.
 //The best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18.
-	
+	if(output1==splitArray(nums1, k1)) {
+		System.out.println("Case 1 Passed");
+	}else {
+		System.out.println("Case 1 Failed");		
+	}
 //Example 2:
 int [] nums2 = {1,2,3,4,5}; 
 int k2 = 2;
@@ -110,9 +99,10 @@ int output2= 9;
 //Explanation: There are four ways to split nums into two subarrays.
 //The best way is to split it into [1,2,3] and [4,5], where the largest sum among the two subarrays is only 9.
 	
-splitArray(nums1,k2);
-	
-
-
+if(output2==splitArray(nums2, k2)) {
+	System.out.println("Case 2 Passed");
+}else {
+	System.out.println("Case 2 Failed");		
+}
 }
 }
